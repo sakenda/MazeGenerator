@@ -10,7 +10,7 @@ namespace RPGDungeons.Library.Models.World
 
         public TileModel()
         {
-            Type = new TileType();
+            Type = TileType.Nothing;
         }
 
     }

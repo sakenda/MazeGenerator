@@ -29,7 +29,7 @@ namespace RPGDungeons.TextAdventure
             {
                 for (int roomX = 0; roomX < map.Rooms.GetLength(1); roomX++)
                 {
-                    if (map.Rooms[roomY, roomX] == null)
+                    if (map.Rooms[roomY, roomX] == null || map.Rooms[roomY, roomX].Tiles == null)
                         continue;
 
                     int tileSizeY = map.Rooms[roomY, roomX].Tiles.GetLength(0);

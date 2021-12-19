@@ -1,4 +1,6 @@
-﻿namespace RPGDungeons.TextAdventure
+﻿using RPGDungeons.Library;
+
+namespace RPGDungeons.TextAdventure
 {
     public class GameManager
     {
@@ -8,6 +10,11 @@
         public void RunGameLoop()
         {
             DisplayIntro();
+
+            WorldGeneration worldGeneration = new WorldGeneration(Library.Enums.MapSize.Medium);
+
+            GameMap = new World(worldGeneration.Map);
+            Player = new Player(GameMap.StartX, GameMap.StartY);
 
             while (true)
             {
@@ -34,6 +41,7 @@
         private void DisplayOutro()
         {
             Console.Clear();
+
             Console.WriteLine(Global.Logo);
             Console.WriteLine("  You escaped!");
             Console.WriteLine("  Thanks for playing.");
@@ -54,7 +62,12 @@
     
         private void HandlePlayerInput()
         {
-            ConsoleKey key = Console.ReadKey(true).Key;
+            ConsoleKey key;
+            do
+            {
+                key = Console.ReadKey(true).Key;
+            }
+            while (Console.KeyAvailable);
 
             switch (key)
             {
