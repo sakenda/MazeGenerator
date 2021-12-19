@@ -44,20 +44,16 @@
             var neighbors = new List<RoomModel>();
 
             if (X > 0 &&
-                map.Rooms[Y, X - 1].Visited == false &&
-                map.Rooms[Y, X - 1].Type != Enums.RoomType.Start) neighbors.Add(map.Rooms[Y, X - 1]);
+                map.Rooms[Y, X - 1].Visited == false) neighbors.Add(map.Rooms[Y, X - 1]);
 
             if (Y > 0 &&
-                map.Rooms[Y - 1, X].Visited == false &&
-                map.Rooms[Y - 1, X].Type != Enums.RoomType.Start) neighbors.Add(map.Rooms[Y - 1, X]);
+                map.Rooms[Y - 1, X].Visited == false) neighbors.Add(map.Rooms[Y - 1, X]);
 
             if (X < map.Rooms.GetLength(1) - 1 &&
-                map.Rooms[Y, X + 1].Visited == false &&
-                map.Rooms[Y, X + 1].Type != Enums.RoomType.Start) neighbors.Add(map.Rooms[Y, X + 1]);
+                map.Rooms[Y, X + 1].Visited == false) neighbors.Add(map.Rooms[Y, X + 1]);
 
             if (Y < map.Rooms.GetLength(0) - 1 &&
-                map.Rooms[Y + 1, X].Visited == false &&
-                map.Rooms[Y + 1, X].Type != Enums.RoomType.Start) neighbors.Add(map.Rooms[Y + 1, X]);
+                map.Rooms[Y + 1, X].Visited == false) neighbors.Add(map.Rooms[Y + 1, X]);
             
             if (neighbors.Count > 0)
             {
