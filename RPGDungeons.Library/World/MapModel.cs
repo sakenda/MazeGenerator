@@ -1,4 +1,4 @@
-﻿namespace RPGDungeons.Library.Models.World
+﻿namespace RPGDungeons.Library.World
 {
     public class MapModel
     {

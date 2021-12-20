@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGDungeons.Library.Enums
+namespace RPGDungeons.Library.World.Enums
 {
     public enum RoomType
     {

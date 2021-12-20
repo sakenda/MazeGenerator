@@ -1,6 +1,6 @@
-﻿using RPGDungeons.Library.Enums;
+﻿using RPGDungeons.Library.Player.Enums;
 
-namespace RPGDungeons.Library.Models
+namespace RPGDungeons.Library.Player
 {
     public class ItemsModel
     {

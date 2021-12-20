@@ -1,4 +1,4 @@
-﻿using RPGDungeons.Library;
+﻿using RPGDungeons.Library.World;
 
 namespace RPGDungeons.TextAdventure
 {
@@ -11,7 +11,7 @@ namespace RPGDungeons.TextAdventure
         {
             DisplayIntro();
 
-            WorldGeneration worldGeneration = new WorldGeneration(Library.Enums.MapSize.Medium);
+            WorldGeneration worldGeneration = new WorldGeneration(5, 24);
 
             GameMap = new World(worldGeneration.Map);
             Player = new Player(GameMap.StartX, GameMap.StartY);

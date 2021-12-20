@@ -1,5 +1,5 @@
-﻿using RPGDungeons.Library.Enums;
-using RPGDungeons.Library.Models;
+﻿using RPGDungeons.Library.Player;
+using RPGDungeons.Library.Player.Enums;
 
 namespace RPGDungeons.Library
 {

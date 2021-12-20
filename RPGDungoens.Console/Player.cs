@@ -1,6 +1,4 @@
-﻿using RPGDungeons.Library.Models;
-
-namespace RPGDungeons.TextAdventure
+﻿namespace RPGDungeons.TextAdventure
 {
     public class Player
     {
@@ -8,7 +6,6 @@ namespace RPGDungeons.TextAdventure
 
         public int X { get; set; }
         public int Y { get; set; }
-        public PlayerModel CurrentPlayer { get; set; }
 
         public Player(int initX, int initY)
         {

@@ -1,8 +1,4 @@
-﻿using RPGDungeons.Library.Models.World;
-
-using System;
-
-namespace RPGDungeons.Library
+﻿namespace RPGDungeons.Library.World
 {
     public class WorldGeneration
     {
@@ -13,10 +9,10 @@ namespace RPGDungeons.Library
 
         public MapModel Map { get; private set; }
 
-        public WorldGeneration(Enums.MapSize size = Enums.MapSize.Small)
+        public WorldGeneration(int rows, int columns)
         {
-            _rows *= (int)size / 100;
-            _columns *= (int)size / 100;
+            _rows = rows;
+            _columns = columns;
             _path = new Stack<RoomModel>();
 
             GenerateMap();
@@ -58,8 +54,16 @@ namespace RPGDungeons.Library
 
             int y = random.Next(0, _rows);
             int x = random.Next(0, _columns);
-            Map.Rooms[y, x].Type = Enums.RoomType.Exit;
-            Map.Rooms[y, x].Tiles[2, 2].Type = Enums.TileType.Exit;
+
+            if (Map.Rooms[y, x].Type == Enums.RoomType.Start)
+            {
+                SetExitRoom(); 
+            }
+            else
+            {
+                Map.Rooms[y, x].Type = Enums.RoomType.Exit;
+                Map.Rooms[y, x].Tiles[2, 2].Type = Enums.TileType.Exit;
+            }
         }
 
         private void SetPath()

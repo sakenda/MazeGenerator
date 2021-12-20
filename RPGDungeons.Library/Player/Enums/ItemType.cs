@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGDungeons.Library.Enums
+namespace RPGDungeons.Library.Player.Enums
 {
     public enum ItemType
     {

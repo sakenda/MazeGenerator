@@ -1,4 +1,4 @@
-﻿namespace RPGDungeons.Library.Enums
+﻿namespace RPGDungeons.Library.World.Enums
 {
     public enum TileType
     {

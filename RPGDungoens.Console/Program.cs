@@ -1,5 +1,4 @@
-﻿using RPGDungeons.Library;
-using RPGDungeons.TextAdventure;
+﻿using RPGDungeons.TextAdventure;
 
 Console.CursorVisible = false;
 Console.Title = "RPG Dungeon";

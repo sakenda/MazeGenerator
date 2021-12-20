@@ -1,4 +1,5 @@
-﻿using RPGDungeons.Library.Models.World;
+﻿using RPGDungeons.Library.World;
+using RPGDungeons.Library.World.Enums;
 
 namespace RPGDungeons.TextAdventure
 {
@@ -44,27 +45,27 @@ namespace RPGDungeons.TextAdventure
 
                             switch (map.Rooms[roomY, roomX].Tiles[tileY, tileX].Type)
                             {
-                                case Library.Enums.TileType.Enemy:
+                                case TileType.Enemy:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolEnemy;
                                     break;
-                                case Library.Enums.TileType.Boss:
+                                case TileType.Boss:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolBoss;
                                     break;
-                                case Library.Enums.TileType.Treasure:
+                                case TileType.Treasure:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolTreasure;
                                     break;
-                                case Library.Enums.TileType.Start:
+                                case TileType.Start:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolStart;
                                     StartY = currentTileInGridY;
                                     StartX = currentTileInGridX;
                                     break;
-                                case Library.Enums.TileType.Exit:
+                                case TileType.Exit:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolExit;
                                     break;
-                                case Library.Enums.TileType.Wall:
+                                case TileType.Wall:
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolWall;
                                     break;
-                                case Library.Enums.TileType.Passage:
+                                case TileType.Passage:
                                     _grid[currentTileInGridY, currentTileInGridX] = " ";
                                     break;
                                 default:

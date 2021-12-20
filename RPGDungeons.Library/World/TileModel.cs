@@ -1,6 +1,6 @@
-﻿using RPGDungeons.Library.Enums;
+﻿using RPGDungeons.Library.World.Enums;
 
-namespace RPGDungeons.Library.Models.World
+namespace RPGDungeons.Library.World
 {
     public class TileModel
     {

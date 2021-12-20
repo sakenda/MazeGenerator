@@ -1,4 +1,4 @@
-﻿namespace RPGDungeons.Library.Models.World
+﻿namespace RPGDungeons.Library.World
 {
     public class RoomModel
     {
@@ -6,9 +6,9 @@
         private double _chanceTreasure = 3;
         private double _chanceBoss = 1;
 
+        internal bool Visited { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public bool Visited { get; set; }
         public Enums.RoomType Type { get; set; }
         public TileModel[,] Tiles { get; set; }
 
@@ -38,7 +38,7 @@
             }
         }
 
-        public RoomModel CheckNeighbors(MapModel map)
+        internal RoomModel CheckNeighbors(MapModel map)
         {
             var random = new Random();
             var neighbors = new List<RoomModel>();
@@ -64,7 +64,7 @@
             return null;
         }
 
-        public void RemoveWall(RoomModel nextRoom)
+        internal void RemoveWall(RoomModel nextRoom)
         {
             int x = X - nextRoom.X;
             int y = Y - nextRoom.Y;
@@ -107,7 +107,7 @@
 
         }
 
-        public void FillRoom()
+        internal void FillRoom()
         {
             var random = new Random();
 

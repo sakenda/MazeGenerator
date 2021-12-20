@@ -1,4 +1,4 @@
-﻿namespace RPGDungeons.Library.Enums
+﻿namespace RPGDungeons.Library.Player.Enums
 {
     public enum PlayerClass
     {
