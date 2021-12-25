@@ -19,39 +19,34 @@ namespace RPGDungeons.DesktopApp
         private int _mapHeigth;
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
         public MapModel Map { get; set; }
-
         public int MapWidth
         {
-            get { return _mapWidth; }
+            get => _mapWidth;
             set
             {
                 _mapWidth = value;
                 OnPropertyChanged();
             }
         }
-
-        public int MapHeigth
+        public int MapHeight
         {
-            get { return _mapHeigth; }
+            get => _mapHeigth;
             set
             {
                 _mapHeigth = value;
                 OnPropertyChanged();
             }
         }
-
         public int Scale
         {
-            get { return _scale; }
+            get => _scale;
             set
             {
                 _scale = value;
                 OnPropertyChanged();
             }
         }
-
 
         public MainWindow()
         {
@@ -69,24 +64,24 @@ namespace RPGDungeons.DesktopApp
         private void InitializeVariables()
         {
             _roomSize = 5;
-            _margin = 10;
+            _margin = 0;
             Scale = 5;
             MapWidth = 20;
-            MapHeigth = 20;
+            MapHeight = 20;
         }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private void DrawTile(int x, int y, int width, int heigth, TileType type)
+        private void DrawTile(int x, int y, int width, int height, TileType type)
         {
             x *= _scale;
             y *= _scale;
             width *= _scale;
-            heigth *= _scale;
+            height *= _scale;
 
             var rect = new Rect()
             {
-                Height = heigth * _scale / _roomSize,
+                Height = height * _scale / _roomSize,
                 Width = width * _scale / _roomSize,
                 Location = new Point(x + _margin * 2, y + _margin * 2)
             };
@@ -164,15 +159,17 @@ namespace RPGDungeons.DesktopApp
 
         private void SetWindowSize(int roomX, int roomY)
         {
-            int bottomMargin = 200;
-            int fullWidth = _margin + (roomX * _roomSize);
-            int fullHeigth = _margin + (roomY * _roomSize);
+            int topMargin = 100;
+            int bottomMargin = 10;
+            int fullWidth = (2 * _margin) + (roomX * _roomSize);
+            int fullHeight = (2 * _margin) + (roomY * _roomSize);
+            int test = 1 * _scale;
 
             // Set Windowsize
             int sizeX = fullWidth * _scale;
-            int sizeY = fullHeigth * _scale;
-            this.Width = sizeX;
-            this.Height = sizeY + bottomMargin;
+            int sizeY = fullHeight * _scale;
+            this.Width = sizeX + 35 + test;
+            this.Height = topMargin + sizeY + bottomMargin + 20;
         }
 
         private void Generate_Click(object sender, RoutedEventArgs e)

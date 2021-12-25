@@ -6,46 +6,51 @@
         xmlns:local="clr-namespace:RPGDungeons.DesktopApp"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="1125"
-        Width="1060">
+        Height="450"
+        Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0 10">
             <StackPanel Orientation="Vertical">
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <TextBlock Text="Rows" Margin="10 0" Width="80"/>
-                    <Slider MinWidth="200"
-                        Value="{Binding MapHeigth, UpdateSourceTrigger=PropertyChanged}"
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Rows" Margin="10 0" Width="60"/>
+                    <TextBlock Text="{Binding MapHeight}" Margin="10 0" Width="20"/>
+                    <Slider MinWidth="150"
+                        Value="{Binding MapHeight, UpdateSourceTrigger=PropertyChanged}"
                         Minimum="3" Maximum="20"
                         IsSnapToTickEnabled="True"
                         TickFrequency="1"
                         Margin="10 0"/>
-                    <TextBlock Text="{Binding MapHeigth}" Margin="10 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Columns" Margin="10 0" Width="80"/>
-                    <Slider MinWidth="200"
+                    <TextBlock Text="Columns" Margin="10 0" Width="60"/>
+                    <TextBlock Text="{Binding MapWidth}" Margin="10 0" Width="20"/>
+                    <Slider MinWidth="150"
                         Value="{Binding MapWidth, UpdateSourceTrigger=PropertyChanged}"
                         Minimum="3" Maximum="20"
                         IsSnapToTickEnabled="True"
                         TickFrequency="1"
                         Margin="10 0"/>
-                    <TextBlock Text="{Binding MapWidth}" Margin="10 0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Scale" Margin="10 0" Width="80"/>
-                    <Slider MinWidth="200"
+                    <TextBlock Text="Scale" Margin="10 0" Width="60"/>
+                    <TextBlock Text="{Binding Scale}" Margin="10 0" Width="20"/>
+                    <Slider MinWidth="150"
                         Value="{Binding Scale, UpdateSourceTrigger=PropertyChanged}"
                         Minimum="5" Maximum="10"
                         IsSnapToTickEnabled="True"
                         TickFrequency="1"
                         Margin="10 0"/>
-                    <TextBlock Text="{Binding Scale}" Margin="10 0"/>
                 </StackPanel>
             </StackPanel>
             
@@ -53,7 +58,7 @@
             
         </StackPanel>
         
-        <Canvas x:Name="canvas_Map" Grid.Row="1" HorizontalAlignment="Stretch"/>
+        <Canvas x:Name="canvas_Map" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
         
     </Grid>
 </Window>
