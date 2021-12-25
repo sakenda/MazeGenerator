@@ -66,10 +66,10 @@ namespace RPGDungeons.TextAdventure
                                     _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolWall;
                                     break;
                                 case TileType.Passage:
-                                    _grid[currentTileInGridY, currentTileInGridX] = " ";
+                                    _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolFloor;
                                     break;
                                 default:
-                                    _grid[currentTileInGridY, currentTileInGridX] = " ";
+                                    _grid[currentTileInGridY, currentTileInGridX] = Global.SymbolFloor;
                                     break;
                             }
                         }
@@ -86,10 +86,24 @@ namespace RPGDungeons.TextAdventure
                 for (int x = 0; x < _columns; x++)
                 {
                     string element = _grid[y, x];
+                    
+                    //// Alternative: Characters foreground
+                    //Console.ForegroundColor = element switch
+                    //{
+                    //    Global.SymbolFloor => ConsoleColor.White,
+                    //    Global.SymbolEnemy => ConsoleColor.DarkMagenta,
+                    //    Global.SymbolBoss => ConsoleColor.Red,
+                    //    Global.SymbolTreasure => ConsoleColor.Yellow,
+                    //    Global.SymbolStart => ConsoleColor.DarkGreen,
+                    //    Global.SymbolExit => ConsoleColor.DarkGreen,
+                    //    Global.SymbolWall => ConsoleColor.Gray,
+                    //    _ => ConsoleColor.White,
+                    //};
 
-                    Console.ForegroundColor = element switch
+                    // Alternative: Coloured background
+                    Console.BackgroundColor = element switch
                     {
-                        Global.SymbolFloor => ConsoleColor.White,
+                        Global.SymbolFloor => ConsoleColor.Black,
                         Global.SymbolEnemy => ConsoleColor.DarkMagenta,
                         Global.SymbolBoss => ConsoleColor.Red,
                         Global.SymbolTreasure => ConsoleColor.Yellow,
@@ -100,13 +114,21 @@ namespace RPGDungeons.TextAdventure
                     };
 
                     Console.SetCursorPosition(x, y);
+
+                    //// Alternative: Write characters
                     Console.Write(element);
+
+                    // Alternative: Only coloured background
+                    //Console.Write(" ");
                 }
             }
         }
 
         public string GetElementAt(int x, int y)
             => _grid[y, x];
+
+        public void RemoveElementAt(int x, int y)
+            => _grid[y, x] = Global.SymbolFloor;
 
         public bool IsPositionWalkable(int x, int y)
         {

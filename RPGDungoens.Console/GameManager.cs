@@ -4,6 +4,10 @@ namespace RPGDungeons.TextAdventure
 {
     public class GameManager
     {
+        private int _money = 0;
+        private bool _isMapDrawn = false;
+        private string[] _nextTiles;
+
         public Player Player { get; set; }
         public World GameMap { get; set; }
 
@@ -23,10 +27,16 @@ namespace RPGDungeons.TextAdventure
 
                 string elementAtPlayerPos = GameMap.GetElementAt(Player.X, Player.Y);
 
-                if (elementAtPlayerPos == "E")
+                if (elementAtPlayerPos == Global.SymbolTreasure)
+                {
+                    _money++;
+                    GameMap.RemoveElementAt(Player.X, Player.Y);
+                }
+
+                if (elementAtPlayerPos == Global.SymbolExit)
                     break;
 
-                Thread.Sleep(20);
+                Thread.Sleep(6);
             }
 
             DisplayOutro();
@@ -51,13 +61,19 @@ namespace RPGDungeons.TextAdventure
 
         private void DrawFrame()
         {
-            Console.Clear();
+            if (!_isMapDrawn)
+            {
+                Console.Clear();
 
-            Console.SetCursorPosition(0, GameMap.Rows + 2);
-            Console.WriteLine("  Menu");
+                Console.SetCursorPosition(0, GameMap.Rows + 2);
+                Console.WriteLine("  [MONEY]: " + _money);
 
-            GameMap.Draw();
+                GameMap.Draw();
+                _isMapDrawn = true;
+            }
+
             Player.Draw();
+
         }
     
         private void HandlePlayerInput()
@@ -68,6 +84,8 @@ namespace RPGDungeons.TextAdventure
                 key = Console.ReadKey(true).Key;
             }
             while (Console.KeyAvailable);
+
+            Player.SetCurrentTile(GameMap.GetElementAt(Player.X, Player.Y));
 
             switch (key)
             {
